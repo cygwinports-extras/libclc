@@ -1,0 +1,20 @@
+NAME="libclc"
+VERSION=0.2.0
+RELEASE=1.git520743b
+CATEGORY="Libs"
+SUMMARY="OpenCL library requirements implementation"
+DESCRIPTION="libclc is an open source, BSD/MIT dual licensed implementation of
+the library requirements of the OpenCL C programming language, as specified by
+the OpenCL 1.1 Specification. libclc is intended to be used with the Clang
+compiler's OpenCL frontend."
+HOMEPAGE="http://libclc.llvm.org/"
+commit=${RELEASE#*git}0b72862a987ead6213dc1a5321a2010f9
+SRC_URI="https://github.com/llvm-mirror/libclc/archive/${commit}/libclc-${commit}.tar.gz"
+SRC_DIR="libclc-${commit}"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	./configure.py --prefix=/usr
+	cygmake
+}
